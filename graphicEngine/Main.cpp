@@ -37,6 +37,7 @@ int main(int argc, char* argv[])
 	
 	Camera camera;
 	Quad quad;
+	camera.Set3DView();
 	//quad.Scale(glm::vec3(0.25, 0.5, 0.25));
 	
 
