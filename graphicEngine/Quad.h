@@ -5,6 +5,7 @@
 #include "Shader.h"
 #include <gtc/matrix_transform.hpp>
 #include "Input.h"
+#include "Texture.h"
 
 class Quad
 {
@@ -23,9 +24,19 @@ public:
 private:
 	Buffer m_buffer;
 	//glm::mat4 m_modelMatrix;
+	Texture m_texture;
+
 	glm::mat4 m_viewMatrix;
+
 	glm::mat4 m_translateMatrix;
 	glm::mat4 m_scaleMatrix;
+	glm::mat4 m_rotateMatrix;
 	glm::vec3 m_position;
+
+	// Lighing
+	float m_shininess;
+	glm::vec3 m_ambient;
+	glm::vec3 m_diffuse;
+	glm::vec3 m_specular;
 };
 

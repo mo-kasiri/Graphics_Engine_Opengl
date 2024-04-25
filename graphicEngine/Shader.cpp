@@ -184,6 +184,21 @@ bool Shader::ErrorManagement(IDType id)
 
 // ===========================
 // Sending uniforms overloads
+bool Shader::SendUniformData(const std::string& uniformName, bool data)
+{
+    GLint ID = glGetUniformLocation(this->m_shaderProgramID, uniformName.c_str());
+    if (ID == -1)
+    {
+        std::cout << "Shader variable " << uniformName << " not found or not used" << std::endl;
+        return false;
+    }
+
+    glUniform1i(ID, data);
+
+    return true;
+}
+
+
 bool Shader::SendUniformData(const std::string& uniformName, GLint data)
 {
     GLint ID = glGetUniformLocation(this->m_shaderProgramID, uniformName.c_str());

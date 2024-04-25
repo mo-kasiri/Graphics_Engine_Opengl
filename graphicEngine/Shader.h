@@ -33,6 +33,7 @@ public:
 
 	// Send Uniforms overloads (we also could use templates)
 	// Scalar
+	bool SendUniformData(const std::string& uniformName, bool data);
 	bool SendUniformData(const std::string& uniformName, GLint data);
 	bool SendUniformData(const std::string& uniformName, GLuint data);
 	bool SendUniformData(const std::string& uniformName, GLfloat data);

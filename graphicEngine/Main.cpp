@@ -8,6 +8,8 @@
 #include "Quad.h"
 #include "Camera.h"
 #include <glm.hpp>
+#include <SDL_image.h>
+#include "Light.h"
 
 
 bool isAppRunning = true;
@@ -26,8 +28,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	Shader::Instance()->CompileShaders("Shaders/Main.vert.c", Shader::ShaderType::VERTEX_SHADER);
-	Shader::Instance()->CompileShaders("Shaders/Main.frag.c", Shader::ShaderType::FRAGMENT_SHADER);
+	Shader::Instance()->CompileShaders("Shaders/vert.glsl", Shader::ShaderType::VERTEX_SHADER);
+	Shader::Instance()->CompileShaders("Shaders/frag.glsl", Shader::ShaderType::FRAGMENT_SHADER);
 
 	Shader::Instance()->AttachShaders();
 	if (!Shader::Instance()->LinkProgram()) {
@@ -39,6 +41,11 @@ int main(int argc, char* argv[])
 	Quad quad;
 	camera.Set3DView();
 	//quad.Scale(glm::vec3(0.25, 0.5, 0.25));
+	quad.Rotate(glm::vec3(1.0f, 0.0f, 0.0f), 90);
+
+	Light light;
+
+
 	
 
 	// ================================================================== main while
@@ -71,6 +78,10 @@ int main(int argc, char* argv[])
 		Screen::Instance()->ClearScreen(0.2f, 0.3f, 0.3f, 1.0f);
 
 		camera.Update();
+
+		light.Render();
+		light.SendToShader();
+		light.Update();
 
 		quad.Update();
 		quad.Render();

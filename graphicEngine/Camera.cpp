@@ -27,11 +27,11 @@ void Camera::Update()
 		}
 		if (Input::Instance()->GetKeyDown() == 's')
 		{
-			this->m_position.z -= 0.001f;
+			this->m_position.z += 0.001f;
 		}
 		if (Input::Instance()->GetKeyDown() == 'w')
 		{
-			this->m_position.z += 0.001f;
+			this->m_position.z -= 0.001f;
 		}
 		if (Input::Instance()->GetKeyDown() == 'q')
 		{
@@ -44,6 +44,7 @@ void Camera::Update()
 	}
 
 	Shader::Instance()->SendUniformData("viewMatrix", this->m_viewMatrix);
+	Shader::Instance()->SendUniformData("cameraPosition", this->m_position.r, this->m_position.g, this->m_position.b);
 	this->m_viewMatrix = glm::lookAt(this->m_position, this->m_position + this->m_direction, this->m_upVector);
 }
 
