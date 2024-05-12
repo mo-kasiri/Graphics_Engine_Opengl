@@ -28,6 +28,9 @@ public:
 
 	void LinkBuffer(const std::string& attribute, VBOType vboType, ComponentType componentType, DataType dataType);
 
+	void FillEBO(GLuint* data, GLsizeiptr bufferSize, FillType fillType);
+
+
 	void Render(DrawType drawType);
 
 	void DestroyBuffer();
@@ -40,6 +43,7 @@ private:
 	GLuint m_colorVBO;
 	GLuint m_textureVBO;
 
+	GLuint m_EBO;
 	GLuint m_VAO;
 
 };

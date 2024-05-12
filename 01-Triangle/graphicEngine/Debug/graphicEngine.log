@@ -1,2 +1,4 @@
-﻿  Main.cpp
+﻿  Buffer.cpp
+  Triangle.cpp
+  Generating Code...
   graphicEngine.vcxproj -> C:\dev\opengl\Graphic_Engine\01-Triangle\Debug\graphicEngine.exe

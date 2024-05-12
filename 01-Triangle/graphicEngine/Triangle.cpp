@@ -11,18 +11,25 @@ Triangle::Triangle()
 	this->m_scaleMatrix = glm::mat4(1.0f);
 	this->m_rotateMatrix = glm::mat4(1.0f);
 
-	GLfloat vertices[] = {
-			-0.1f, -0.1f, 0.0f,
-			 0.1f, -0.1f, 0.0f,
-			 0.0f,  0.1f, 0.0f
+	// Two Triangles = A Rectangle
+	float vertices[] = {
+		 0.5f,  0.5f, 0.0f,  // top right
+		 0.5f, -0.5f, 0.0f,  // bottom right
+		-0.5f, -0.5f, 0.0f,  // bottom left
+		-0.5f,  0.5f, 0.0f   // top left 
 	};
 
-	this->m_buffer.CreateBuffer(3);
+	unsigned int indices[] = {  // note that we start from 0!
+		0, 1, 3,  // first Triangle
+		1, 2, 3   // second Triangle
+	};
+
+	this->m_buffer.CreateBuffer(6);
 	this->m_buffer.FillVBO(Buffer::VERTEX_BUFFER, vertices, sizeof(vertices), Buffer::SINGLE);
+	this->m_buffer.FillEBO(indices, sizeof(indices), Buffer::SINGLE);
 	this->m_buffer.LinkBuffer("vertexIn", Buffer::VERTEX_BUFFER, Buffer::XYZ, Buffer::FLOAT);
 
 	this->m_position = glm::vec3(0.0f);
-
 }
 
 Triangle::~Triangle()

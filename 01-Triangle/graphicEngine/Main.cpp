@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
 	}
 
 	Triangle triangle;
-	triangle.Scale(glm::vec3(2.0, 2.0, 2.0));
+	//triangle.Scale(glm::vec3(2.0, 2.0, 2.0));
 	
 	
 	// ================================================================== main while
