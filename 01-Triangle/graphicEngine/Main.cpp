@@ -5,14 +5,14 @@
 #include "Screen.h"
 #include "Input.h"
 #include "Shader.h"
-#include "Quad.h"
-#include "Camera.h"
 #include <glm.hpp>
 #include <SDL_image.h>
-#include "Light.h"
+
+#include "Triangle.h"
 
 
 bool isAppRunning = true;
+
 
 int main(int argc, char* argv[])
 {
@@ -36,18 +36,10 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
+	Triangle triangle;
+	triangle.Scale(glm::vec3(2.0, 2.0, 2.0));
 	
-	Camera camera;
-	Quad quad;
-	camera.Set3DView();
-	//quad.Scale(glm::vec3(0.25, 0.5, 0.25));
-	quad.Rotate(glm::vec3(1.0f, 0.0f, 0.0f), 90);
-
-	Light light;
-
-
 	
-
 	// ================================================================== main while
 	while (isAppRunning)
 	{
@@ -55,37 +47,11 @@ int main(int argc, char* argv[])
 
 		isAppRunning = !Input::Instance()->IsXCliked();
 
-		/*char keyPressed = Input::Instance()->GetKeyDown();
-
-		
-		static int i = 0;
-		if (Input::Instance()->IsLeftButtonClicked())
-		{
-			i++;
-			std::cout << "Left Button " << i << std::endl;
-		}
-		else {
-			i = 0;
-		}
-
-
-		int mouseX = Input::Instance()->GetMousePositionX();
-		int mouseY = Input::Instance()->GetMousePositionY();
-
-		std::cout << "Mouse at Position " << mouseX << ", " << mouseY << std::endl;*/
-		
-
 		Screen::Instance()->ClearScreen(0.2f, 0.3f, 0.3f, 1.0f);
 
-		camera.Update();
+		triangle.Render();
+		triangle.Update();
 
-		light.Render();
-		light.SendToShader();
-		light.Update();
-
-		quad.Update();
-		quad.Render();
-		
 
 		// update / render 
 		Screen::Instance()->Present();
@@ -96,6 +62,7 @@ int main(int argc, char* argv[])
 	Shader::Instance()->DetachShaders();
 	Shader::Instance()->DestroyShaders();
 	Shader::Instance()->DestroyProgram();
+
 	Screen::Instance()->ShutDown();
 	
 	return 0;
