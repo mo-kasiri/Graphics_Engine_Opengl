@@ -1,0 +1,13 @@
+﻿  Buffer.cpp
+  Camera.cpp
+  Input.cpp
+  Light.cpp
+  Main.cpp
+  Quad.cpp
+  Screen.cpp
+  Shader.cpp
+  Texture.cpp
+  Generating Code...
+C:\dev\opengl\Graphic_Engine\01-Triangle\graphicEngine\Shader.cpp(180): warning C4715: 'Shader::ErrorManagement': not all control paths return a value
+  glad.c
+  graphicEngine.vcxproj -> C:\dev\opengl\Graphic_Engine\01-Triangle\Debug\graphicEngine.exe
