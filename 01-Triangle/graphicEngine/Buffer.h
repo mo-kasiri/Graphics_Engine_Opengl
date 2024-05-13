@@ -26,9 +26,10 @@ public:
 				GLsizeiptr bufferSize,
 				FillType fillType);
 
+	void FillEBO(GLuint* data, GLsizeiptr bufferSize, FillType fillType);
+	
 	void LinkBuffer(const std::string& attribute, VBOType vboType, ComponentType componentType, DataType dataType);
 
-	void FillEBO(GLuint* data, GLsizeiptr bufferSize, FillType fillType);
 
 
 	void Render(DrawType drawType);

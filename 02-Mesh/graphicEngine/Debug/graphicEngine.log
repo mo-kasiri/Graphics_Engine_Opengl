@@ -1,6 +1,4 @@
-﻿  Camera.cpp
-  Quad.cpp
-  Shader.cpp
+﻿  GridLines.cpp
+  Main.cpp
   Generating Code...
-C:\dev\opengl\Graphic_Engine\graphicEngine\graphicEngine\Shader.cpp(180): warning C4715: 'Shader::ErrorManagement': not all control paths return a value
-  graphicEngine.vcxproj -> C:\dev\opengl\Graphic_Engine\graphicEngine\Debug\graphicEngine.exe
+  graphicEngine.vcxproj -> C:\dev\opengl\Graphic_Engine\02-Mesh\Debug\graphicEngine.exe

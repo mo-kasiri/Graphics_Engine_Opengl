@@ -15,6 +15,7 @@ void Buffer::CreateBuffer(GLuint totalVertices)
 	glGenBuffers(1, &this->m_vertexVBO);
 	glGenBuffers(1, &this->m_colorVBO);
 	glGenBuffers(1, &this->m_textureVBO);
+	glGenBuffers(1, &this->m_EBO);
 	glGenVertexArrays(1, &this->m_VAO);
 
 	this->m_totalVertices = totalVertices;
@@ -41,6 +42,14 @@ void Buffer::FillVBO(VBOType vboType, GLfloat* data, GLsizeiptr bufferSize, Fill
 	glBindVertexArray(0);
 }
 
+
+void Buffer::FillEBO(GLuint* data, GLsizeiptr bufferSize, FillType fillType)
+{
+	glBindVertexArray(this->m_VAO);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->m_EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, bufferSize, data, fillType);
+	glBindVertexArray(0);
+}
 
 void Buffer::LinkBuffer(const std::string& attribute, VBOType vboType, ComponentType componentType, DataType dataType)
 {
@@ -70,10 +79,12 @@ void Buffer::LinkBuffer(const std::string& attribute, VBOType vboType, Component
 
 }
 
+
 void Buffer::Render(DrawType drawType)
 {
 	glBindVertexArray(this->m_VAO);
 	glDrawArrays(drawType, 0, this->m_totalVertices);
+	//glDrawElements(drawType, this->m_totalVertices, GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
 }
 
@@ -82,6 +93,7 @@ void Buffer::DestroyBuffer()
 	glDeleteBuffers(1, &this->m_vertexVBO);
 	glDeleteBuffers(1, &this->m_colorVBO);
 	glDeleteBuffers(1, &this->m_textureVBO);
+	glDeleteBuffers(1, &this->m_EBO);
 	glDeleteVertexArrays(1, &this->m_VAO);
 	
 }
